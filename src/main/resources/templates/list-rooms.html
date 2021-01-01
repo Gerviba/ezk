@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link th:href="@{/style/style.css}" rel="stylesheet">
+    <meta name="theme-color" content="#020D13">
+</head>
+<body onload="refresh()">
+
+    <div class="modal-holder" id="password-prompt" onclick="closeModal()" style="display: none">
+        <div class="modal" onclick="event.stopPropagation()">
+            <h3>Enter password</h3>
+            <form th:action="@{/room}" class="futuristic" method="post">
+                <input name="roomCode" value="" id="roomCodeField" type="hidden">
+                <input type="password" name="password" id="roomPasswordField">
+                <button type="button" class="btn" onclick="closeModal()">Cancel</button>
+                <input type="submit" value="Join">
+            </form>
+        </div>
+    </div>
+
+    <div class="nav-bg">
+        <nav class="menu-nav">
+            <div class="logo">[<span>Ezk</span>]</div>
+            <button class="btn" onclick="refresh(); return false">Refresh</button>
+            <button class="btn" th:onclick="|window.location.href='@{/create-room}'; return false|">Create room</button>
+        </nav>
+    </div>
+    <div class="container" id="rooms">
+        <h2>...</h2>
+        <article class="room" th:remove="all">
+            <h2>CODE</h2>
+            <button class="join-btn" onclick="joinRoom('CODE'); return false">join</button>
+            <table>
+                <tr>
+                    <td>Players</td>
+                    <td><span class="data">n</span>/<span>x</span></td>
+                    <td>Host</td>
+                    <td class="data">Name o' Player</td>
+                </tr>
+                <tr>
+                    <td>Difficulty</td>
+                    <td><span class="box-full"></span><span class="box-empty"></span><span class="box-empty"></span></td>
+                    <td>Map</td>
+                    <td class="data">Spaceship</td>
+                </tr>
+                <tr>
+                    <td>Private</td>
+                    <td class="data"><span class="material-icons">lock_open</span></td>
+                </tr>
+            </table>
+        </article>
+
+    </div>
+    <script th:src="@{/js/listRooms.js}"></script>
+    <script th:src="@{/js/menu.js}"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link th:href="@{/style/ingame-style.css}" rel="stylesheet">
+    <meta name="theme-color" content="#020D13">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <link rel="preload" href="/images/black_connect.png"             as="image">
+    <link rel="preload" href="/images/black_cut.png"                 as="image">
+    <link rel="preload" href="/images/yellow_cut.png"                as="image">
+    <link rel="preload" href="/images/yellow_connect.png"            as="image">
+    <link rel="preload" href="/images/white_cut.png"                 as="image">
+    <link rel="preload" href="/images/white_connect.png"             as="image">
+    <link rel="preload" href="/images/spaceship_win.png"             as="image">
+    <link rel="preload" href="/images/spaceship_path_lose.png"       as="image">
+    <link rel="preload" href="/images/spaceship_path_1.png"          as="image">
+    <link rel="preload" href="/images/spaceship_intro.png"           as="image">
+    <link rel="preload" href="/images/spaceship_gate_w_1.png"        as="image">
+    <link rel="preload" href="/images/spaceship_gate_failed.png"     as="image">
+    <link rel="preload" href="/images/spaceship_gate_k_1.png"        as="image">
+    <link rel="preload" href="/images/spaceship_gate_authorized.png" as="image">
+    <link rel="preload" href="/images/red_cut.png"                   as="image">
+    <link rel="preload" href="/images/red_connect.png"               as="image">
+    <link rel="preload" href="/images/purple_cut.png"                as="image">
+    <link rel="preload" href="/images/purple_connect.png"            as="image">
+    <link rel="preload" href="/images/green_cut.png"                 as="image">
+    <link rel="preload" href="/images/green_connect.png"             as="image">
+    <link rel="preload" href="/images/gray_cut.png"                  as="image">
+    <link rel="preload" href="/images/gray_connect.png"              as="image">
+    <link rel="preload" href="/images/chip.png"                      as="image">
+    <link rel="preload" href="/images/blue_cut.png"                  as="image">
+    <link rel="preload" href="/images/blue_connect.png"              as="image">
+
+</head>
+<body onload="onLoaded()">
+    <div id="background-image-holder" class="background-image-holder"></div>
+
+    <div id="loading" class="loading" style="display: block">
+        <div class="centered">
+            <div>
+                <h1 th:text="|Connecting to ${code}|" id="loadingMessage">Connecting to CODE</h1>
+                <button class="btn" id="loadingBackToRoom" style="display: none" th:onclick="|window.location.href='@{/game}'|">Back to room list</button>
+            </div>
+        </div>
+    </div>
+
+    <div id='lobby' class="loading lobby" style="display: none">
+        <div class="centered">
+            <div>
+                <div class="lobby-panel">
+                    <h1>Waiting for other players</h1>
+                    <p>The game starts when all users are ready and the host starts the game.</p>
+                    <div class="halves">
+                        <div class="half">
+                            <table id="lobbyPlayers" th:remove="body">
+                                <tr class="tr-host">
+                                    <td><div class="host">@</div></td>
+                                    <td><div class="ready-sign"></div></td>
+                                    <td>PlayerName</td>
+                                </tr>
+                                <tr>
+                                    <td><div class="host" style="display: none">@</div></td>
+                                    <td><div class="not-ready-sign"></div></td>
+                                    <td>PlayerName</td>
+                                </tr>
+                                <tr>
+                                    <td><div class="host" style="display: none">@</div></td>
+                                    <td><div class="ready-sign"></div></td>
+                                    <td>PlayerName</td>
+                                </tr>
+                                <tr>
+                                    <td><div class="host" style="display: none">@</div></td>
+                                    <td><div class="ready-sign"></div></td>
+                                    <td>PlayerName</td>
+                                </tr>
+                                <tr>
+                                    <td><div class="host" style="display: none">@</div></td>
+                                    <td><div class="not-ready-sign"></div></td>
+                                    <td>PlayerName</td>
+                                </tr>
+                                <tr>
+                                    <td><div class="host" style="display: none">@</div></td>
+                                    <td><div class="not-ready-sign"></div></td>
+                                    <td>PlayerName</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="half">
+                            <table class="table-info">
+                                <tr>
+                                    <td>Room code:</td>
+                                    <td id="lobbyRoomCode">RZPZ</td>
+                                </tr>
+                                <tr>
+                                    <td>Max players:</td>
+                                    <td id="lobbyMaxPlayers">6</td>
+                                </tr>
+                                <tr>
+                                    <td>Ready players:</td>
+                                    <td id="lobbyReadyPlayers">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Map:</td>
+                                    <td id="lobbyMap">Spaceship 2</td>
+                                </tr>
+                            </table>
+                            <button class="btn btn-ready" id="lobbyReadyButton" onclick="sendReady()">Ready</button>
+                            <button class="btn btn-start-game" id="lobbyStartButton" onclick="sendStartGame()">Start Game</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='intro' class="ui-container no-navigation" style="display: none">
+        <div class="centered">
+            <div class="intro">
+                <h2>THE PLAN IS EASY</h2>
+                <p>In order to escape you need to hack or disarm every security systems. There are notes to help you but you have to work together. There is no room for error. If the alarm activates you all lose.</p>
+                <p>After three gates you can choose a new direction. Be careful because if you choose the wrong way you can easily find yourselves in trouble! Good luck!</p>
+                <button id="introStart" class="btn" onclick="sendSkipIntro()">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <div id='wires' class="ui-container with-navigation" style="display: none">
+        <div class="centered">
+            <div>
+                <div class="panel">
+                    <div class="wires">
+                        <h3>Security Alarm System</h3>
+                        <table>
+                            <tr>
+                                <td id="wirePlate1" style="display: none">1</td>
+                                <td id="wirePlate2" style="display: none">2</td>
+                                <td id="wirePlate3" style="display: none">3</td>
+                                <td id="wirePlate4" style="display: none">4</td>
+                                <td id="wirePlate5" style="display: none">5</td>
+                                <td id="wirePlate6" style="display: none">6</td>
+                                <td id="wirePlate7" style="display: none">7</td>
+                                <td id="wirePlate8" style="display: none">8</td>
+                                <td id="wirePlate9" style="display: none">9</td>
+                            </tr>
+                            <tr>
+                                <td id="wireHolder1" style="display: none"><div id="wireWire1" class="wire" onclick="onWireClick(0)"></div></td>
+                                <td id="wireHolder2" style="display: none"><div id="wireWire2" class="wire" onclick="onWireClick(1)"></div></td>
+                                <td id="wireHolder3" style="display: none"><div id="wireWire3" class="wire" onclick="onWireClick(2)"></div></td>
+                                <td id="wireHolder4" style="display: none"><div id="wireWire4" class="wire" onclick="onWireClick(3)"></div></td>
+                                <td id="wireHolder5" style="display: none"><div id="wireWire5" class="wire" onclick="onWireClick(4)"></div></td>
+                                <td id="wireHolder6" style="display: none"><div id="wireWire6" class="wire" onclick="onWireClick(5)"></div></td>
+                                <td id="wireHolder7" style="display: none"><div id="wireWire7" class="wire" onclick="onWireClick(6)"></div></td>
+                                <td id="wireHolder8" style="display: none"><div id="wireWire8" class="wire" onclick="onWireClick(7)"></div></td>
+                                <td id="wireHolder9" style="display: none"><div id="wireWire9" class="wire" onclick="onWireClick(8)"></div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="control">
+                        <div class="component reboot">
+                            <button class="btn btn-reboot" onclick="sendSubmit()">Reboot</button>
+                        </div>
+                        <div class="component alarm">
+                            <div>Alarm&nbsp;activate</div>
+                            <div id="time1">15:42</div>
+                        </div>
+                        <div class="component chip"></div>
+                        <div class="component feature" id="wireFeature3">
+                            <span id="wireFeature3Category" style="font-size: 0"></span>
+                            <span id="wireFeature3Value" style="font-size: 0"></span>
+                            <button class="btn btn-alarm" type="button" onclick="sendAbort()">ACTIVATE ALARM</button>
+                        </div>
+                        <div class="component feature" id="wireFeature1">
+                            <div id="wireFeature1Category">MADE&nbsp;IN</div>
+                            <div id="wireFeature1Value">China</div>
+                        </div>
+                        <div class="component feature" id="wireFeature2">
+                            <div id="wireFeature2Category">MANUFACTURER</div>
+                            <div id="wireFeature2Value">Acme Inc.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='keypad' class="ui-container with-navigation" style="display: none">
+        <div class="centered">
+            <div>
+                <div class="code">
+                    <div class="halves">
+                        <div class="keypad">
+                            <h3>Enter Security Code</h3>
+                            <div id="keyInputScreen" class="input-screen"></div>
+                            <table>
+                                <tr>
+                                    <td><div id="keyKey1" onclick="onKeyClick(0)" class="key">7</div></td>
+                                    <td><div id="keyKey2" onclick="onKeyClick(1)" class="key">8</div></td>
+                                    <td><div id="keyKey3" onclick="onKeyClick(2)" class="key">9</div></td>
+                                </tr>
+                                <tr>
+                                    <td><div id="keyKey4" onclick="onKeyClick(3)" class="key">4</div></td>
+                                    <td><div id="keyKey5" onclick="onKeyClick(4)" class="key">5</div></td>
+                                    <td><div id="keyKey6" onclick="onKeyClick(5)" class="key">6</div></td>
+                                </tr>
+                                <tr>
+                                    <td><div id="keyKey7" onclick="onKeyClick(6)" class="key">1</div></td>
+                                    <td><div id="keyKey8" onclick="onKeyClick(7)" class="key">2</div></td>
+                                    <td><div id="keyKey9" onclick="onKeyClick(8)" class="key">3</div></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="key key-ok" onclick="sendSubmit()">OK</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="control-holder">
+                            <div class="control">
+                                <div class="component chip"></div>
+                                <div class="component alarm">
+                                    <div>Alarm&nbsp;activate</div>
+                                    <div id="time2">15:42</div>
+                                </div>
+                                <div class="component feature" id="keyFeature1">
+                                    <div id="keyFeature1Category">MADE&nbsp;IN</div>
+                                    <div id="keyFeature1Value">China</div>
+                                </div>
+                                <div class="component feature" id="keyFeature2">
+                                    <div id="keyFeature2Category">MANUFACTURER</div>
+                                    <div id="keyFeature2Value">Acme Inc.</div>
+                                </div>
+                                <div class="component feature" id="keyFeature3">
+                                    <span id="keyFeature3Category" style="font-size: 0"></span>
+                                    <span id="keyFeature3Value" style="font-size: 0"></span>
+                                    <button class="btn btn-alarm" type="button" onclick="sendAbort()">ACTIVATE ALARM</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='notes' class="ui-container with-navigation" style="display: none">
+        <div class="centered">
+            <div>
+                <div class="code">
+                    <div class="halves">
+                        <div class="control-holder control-left">
+                            <div class="control">
+                                <div class="component notes-header">FOLLOW THE NOTES TO DISARM THE SECURITY SYSTEM</div>
+                                <div class="component alarm">
+                                    <div>Alarm&nbsp;activate</div>
+                                    <div id="time3">15:42</div>
+                                </div>
+                                <div class="component hint">
+                                    Hint: Read the dark ones carefully if they appear, because they will be useful for the next path selection.
+                                </div>
+                            </div>
+                        </div>
+                        <div id="notesNotes" class="notes" th:remove="body">
+
+                            <div class="note">
+                                <h4>Stack Overflow</h4>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+
+                            <div class="note">
+                                <h4>Stack Overflow</h4>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            </div>
+
+                            <div class="note note-path">
+                                <h4>Hint</h4>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='team' class="ui-container with-navigation" style="display: none">
+        <div class="centered">
+            <div>
+                <div class="panel">
+                    <div class="wires team">
+                        <h3>YOUR TEAM</h3>
+                        <table id="teamPlayers" th:remove="body">
+                            <tr><td>Your name</td></tr>
+                            <tr><td>Your name</td></tr>
+                            <tr><td>Your name</td></tr>
+                            <tr><td>Your name</td></tr>
+                            <tr><td>Your name</td></tr>
+                            <tr><td>Your name</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='view' class="ui-container with-navigation" style="display: none">
+        <div class="centered">
+            <div class="view">
+                <button class="btn btn-nxt" id="viewContinue" onclick="sendNext()">Continue</button>
+
+                <h1 id="viewTitle">AUTHORIZED</h1>
+                <h2 id="viewContent">You are free to go!</h2>
+
+                <button class="btn btn-leave" id="viewLeave" th:onclick="|window.location.href='@{/game}'|">Leave game</button>
+            </div>
+        </div>
+    </div>
+
+    <div id='path' class="ui-container with-navigation" style="display: none">
+        <div class="centered">
+            <div class="path">
+                <h1>SELECT THE WAY YOU WANT TO GO</h1>
+
+                <button class="btn btn-path" onclick="goLeft()">Go Left</button>
+                <button class="btn btn-path" onclick="goForward()">Go Straight Forward</button>
+                <button class="btn btn-path" onclick="goRight()">Go Right</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="nav" class="nav" style="display: none">
+        <div class="centered">
+            <div class="fixed">
+                <button class="btn" onclick="openGate()">GATE</button>
+                <button class="btn" onclick="openNotes()">NOTES</button>
+                <button class="btn" onclick="openTeam()">TEAM</button>
+                <button class="btn" onclick="openView()">VIEW</button>
+            </div>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        const CODE = '[(${code})]';
+        const USERNAME = '[(${username})]';
+        const SCREEN = /*[(${screen})]*/ false;
+        const PASSWORD = '[(${password})]';
+    </script>
+    <script th:src="@{/js/ingame.js}"></script>
+
+</body>
+</html>

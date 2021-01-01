@@ -1,0 +1,225 @@
+{
+  "sectors": {
+    "1": [
+      {
+        "innerState": 1001,
+        "gateDetails": {
+          "type": "WIRES",
+          "graphics": "spaceship_gate_w_1",
+          "buttons": [
+            {"id": 0, "name": "1", "color": "WHITE", "broken": false},
+            {"id": 1, "name": "2", "color": "RED", "broken": false},
+            {"id": 2, "name": "3", "color": "YELLOW", "broken": false},
+            {"id": 3, "name": "4", "color": "WHITE", "broken": false}
+          ],
+          "features": [
+            {"id": 2, "type": "ABORT", "value": ""}
+          ],
+          "solution": [1, 3]
+        },
+        "notes": [
+          {"type": "SIMPLE", "title": "StackOverflow", "text": "Cut the red wire if at least two white appears."},
+          {"type": "SIMPLE", "title": "Twitter @realDonaldTrump", "text": "Cut all the wires that you should cut"},
+          {"type": "SIMPLE", "title": "Mysterious Russian Forum", "text": "Cut the yellow wire next to the blue one"},
+          {"type": "SIMPLE", "title": "British Scientist", "text": "Cut at least two wires"},
+          {"type": "SIMPLE", "title": "Some notes", "text": "Cut all the white wires unless other rules overrides it"},
+          {"type": "SIMPLE", "title": "The Manual", "text": "Don't cut the first wire"},
+          {"type": "SIMPLE", "title": "Test placeholder", "text": "This is just to test out the scrolling feature of the recycler view. This is just to test out the scrolling feature of the recycler view. This is just to test out the scrolling feature of the recycler view."},
+          {"type": "SIMPLE", "title": "Test placeholder", "text": "This is just to test out the scrolling feature of the recycler view. This is just to test out the scrolling feature of the recycler view. This is just to test out the scrolling feature of the recycler view."}
+        ],
+        "times": [120, 60, 30]
+      },
+      {
+        "innerState": 1002,
+        "gateDetails": {
+          "type": "WIRES",
+          "graphics": "spaceship_gate_w_1",
+          "buttons": [
+            {"id": 0, "name": "1", "color": "BLUE", "broken": false},
+            {"id": 1, "name": "2", "color": "GREEN", "broken": false},
+            {"id": 2, "name": "3", "color": "RED", "broken": false},
+            {"id": 3, "name": "4", "color": "RED", "broken": false},
+            {"id": 4, "name": "5", "color": "BLUE", "broken": false}
+          ],
+          "features": [
+            {"id": 0, "type": "VERSION", "value": "12.5.156"},
+            {"id": 2, "type": "ABORT", "value": ""}
+          ],
+          "solution": [1]
+        },
+        "notes": [
+          {"type": "SIMPLE", "title": "Mysterious Russian Forum", "text": "Cut reds if there's more than 5 wires present"},
+          {"type": "SIMPLE", "title": "British Scientist", "text": "Cut all the blues if the version is 12.5.159"},
+          {"type": "SIMPLE", "title": "Some notes", "text": "Don't cut any red wires"},
+          {"type": "SIMPLE", "title": "Twitter @elonmusk", "text": "Cut all the greens pls"},
+          {"type": "SIMPLE", "title": "StackOverflow", "text": "Cut yellows if there's any purple presents"},
+          {"type": "SIMPLE", "title": "The Manual", "text": "Cut the red if the version is newer than 9.2.300"}
+        ],
+        "times": [120, 60, 30]
+      },
+      {
+        "innerState": 1003,
+        "gateDetails": {
+          "type": "WIRES",
+          "graphics": "spaceship_gate_w_1",
+          "buttons": [
+            {"id": 0, "name": "1", "color": "RED", "broken": false},
+            {"id": 1, "name": "x", "color": "GREEN", "broken": false},
+            {"id": 2, "name": "3", "color": "BLUE", "broken": false},
+            {"id": 3, "name": "4", "color": "BLUE", "broken": false},
+            {"id": 4, "name": "5", "color": "WHITE", "broken": false},
+            {"id": 5, "name": "x", "color": "GREEN", "broken": false},
+            {"id": 6, "name": "7", "color": "WHITE", "broken": false},
+            {"id": 7, "name": "8", "color": "BLACK", "broken": false},
+            {"id": 8, "name": "x", "color": "RED", "broken": false}
+          ],
+          "features": [
+            {"id": 0, "type": "MANUFACTURER", "value": "Acme Inc."}
+          ],
+          "solution": [2,7,3]
+        },
+        "notes": [
+          {"type": "SIMPLE", "title": "StackOverflow", "text": "Cut every blues if more than one red present"},
+          {"type": "SIMPLE", "title": "StackOverflow", "text": "Press active alarm if you want to lose"},
+          {"type": "SIMPLE", "title": "StackOverflow", "text": "Cut the second if the manufacturer is not an incorporated company."},
+          {"type": "SIMPLE", "title": "Twitter @Linus__Torvalds", "text": "Cut every wires next to X labeled ones"},
+          {"type": "SIMPLE", "title": "Mysterious Russian Forum", "text": "Cut the blacks if the panel is not manufactured by the Acme Inc."},
+          {"type": "SIMPLE", "title": "British Scientist", "text": "Don't lose"},
+          {"type": "SIMPLE", "title": "The Manual", "text": "You only have to cut one whites"}
+        ],
+        "times": [120, 60, 30]
+      }
+    ],
+    "2": [
+      {
+        "innerState": 1011,
+        "gateDetails": {
+          "type": "KEYPAD",
+          "graphics": "spaceship_gate_k_1",
+          "buttons": [
+            {"id": 0, "name": "1", "color": "WHITE", "broken": false},
+            {"id": 1, "name": "2", "color": "WHITE", "broken": false},
+            {"id": 2, "name": "3", "color": "WHITE", "broken": false},
+            {"id": 3, "name": "4", "color": "WHITE", "broken": false},
+            {"id": 4, "name": "5", "color": "WHITE", "broken": false},
+            {"id": 5, "name": "6", "color": "WHITE", "broken": false},
+            {"id": 6, "name": "7", "color": "WHITE", "broken": false},
+            {"id": 7, "name": "8", "color": "WHITE", "broken": false},
+            {"id": 8, "name": "9", "color": "WHITE", "broken": false}
+          ],
+          "features": [
+            {"id": 0, "type": "EDITION", "value": "simple"}
+          ],
+          "solution": [0, 1, 2, 3]
+        },
+        "notes": [
+          {"type": "SIMPLE", "title": "StackOverflow", "text": "The code starts with 1234"},
+          {"type": "SIMPLE", "title": "Youtube recommendation", "text": "You see the 5? 10 reasons to not press it!"},
+          {"type": "SIMPLE", "title": "Soviet catalogue", "text": "net 7167, net"},
+          {"type": "SIMPLE", "title": "CIA file", "text": "It has 4 digits"},
+          {"type": "SIMPLE", "title": "Some notes", "text": "The code starts with 3 if this is a complex edition"},
+          {"type": "SIMPLE", "title": "The Manual", "text": "Press any red buttons if any"}
+        ],
+        "times": [100, 50, 20]
+      },
+      {
+        "innerState": 1012,
+        "gateDetails": {
+          "type": "KEYPAD",
+          "graphics": "spaceship_gate_k_1",
+          "buttons": [
+            {"id": 0, "name": "7", "color": "WHITE", "broken": false},
+            {"id": 1, "name": "8", "color": "WHITE", "broken": false},
+            {"id": 2, "name": "9", "color": "WHITE", "broken": false},
+            {"id": 3, "name": "4", "color": "WHITE", "broken": false},
+            {"id": 4, "name": "5", "color": "WHITE", "broken": false},
+            {"id": 5, "name": "6", "color": "WHITE", "broken": true},
+            {"id": 6, "name": "1", "color": "WHITE", "broken": false},
+            {"id": 7, "name": "2", "color": "WHITE", "broken": false},
+            {"id": 8, "name": "3", "color": "WHITE", "broken": false}
+          ],
+          "features": [
+            {"id": 2, "type": "ABORT", "value": ""}
+          ],
+          "solution": [0, 6, 8, 2, 4]
+        },
+        "notes": [
+          {"type": "SIMPLE", "title": "StackOverflow", "text": "The code won't contain 8, and 4"},
+          {"type": "SIMPLE", "title": "Youtube recommendation", "text": "The last digit is at the center"},
+          {"type": "SIMPLE", "title": "Soviet catalogue", "text": "da press 7 first, da"},
+          {"type": "SIMPLE", "title": "CIA file", "text": "It has 5 digits"},
+          {"type": "SIMPLE", "title": "Some notes", "text": "Press the buttons in the corner"},
+          {"type": "SIMPLE", "title": "The Manual", "text": "Press the first 4 button in counterclockwise"}
+        ],
+        "times": [100, 50, 20]
+      },
+      {
+        "innerState": 1013,
+        "gateDetails": {
+          "type": "KEYPAD",
+          "graphics": "spaceship_gate_k_1",
+          "buttons": [
+            {"id": 0, "name": "7", "color": "RED", "broken": false},
+            {"id": 1, "name": "8", "color": "RED", "broken": false},
+            {"id": 2, "name": "9", "color": "WHITE", "broken": true},
+            {"id": 3, "name": "4", "color": "RED", "broken": false},
+            {"id": 4, "name": "5", "color": "WHITE", "broken": true},
+            {"id": 5, "name": "6", "color": "WHITE", "broken": false},
+            {"id": 6, "name": "1", "color": "WHITE", "broken": true},
+            {"id": 7, "name": "2", "color": "WHITE", "broken": false},
+            {"id": 8, "name": "3", "color": "WHITE", "broken": false}
+          ],
+          "features": [
+            {"id": 0, "type": "MADE_IN", "value": "China"}
+          ],
+          "solution": [5, 5, 5, 5, 5]
+        },
+        "notes": [
+          {"type": "SIMPLE", "title": "StackOverflow", "text": "Don't press any red buttons if it is made in China"},
+          {"type": "SIMPLE", "title": "Twitter @realDonaldTrump", "text": "Is it made in Chianaa'? So hack then!"},
+          {"type": "SIMPLE", "title": "Soviet catalogue", "text": "Press all the red button if it was made in the Russian Federation"},
+          {"type": "SIMPLE", "title": "CIA file", "text": "It has the digit 6 in it more than one"},
+          {"type": "SIMPLE", "title": "Some notes", "text": "Don't press 2 or 3 no matter what"},
+          {"type": "SIMPLE", "title": "The Manual", "text": "The code is 5 digits long"}
+        ],
+        "times": [100, 50, 20]
+      }
+    ]
+  },
+  "paths": {
+    "1": [
+      {
+        "innerState": 2001,
+        "gateDetails": {
+          "type": "PATHS",
+          "graphics": "spaceship_path_1",
+          "buttons": [],
+          "features": [],
+          "goodDirections": ["FORWARD", "RIGHT"]
+        },
+        "notes": [
+          {"type": "PATH_INFO", "title": "Holy gospel | Jakob 13:7", "text": "Don't go left even if you want"},
+          {"type": "PATH_INFO", "title": "An X-File", "text": "The forward path is reported to be safer than the right path"},
+          {"type": "PATH_INFO", "title": "Google maps", "text": "Connection lost..."}
+        ]
+      }
+    ],
+    "2": [
+      {
+        "innerState": 2002,
+        "gateDetails": {
+          "type": "PATHS",
+          "graphics": "spaceship_path_1",
+          "buttons": [],
+          "features": [],
+          "goodDirections": ["LEFT"]
+        },
+        "notes": [
+          {"type": "PATH_INFO", "title": "Intuition", "text": "We should go sideways next time..."},
+          {"type": "PATH_INFO", "title": "Dijkstra", "text": "The shortest path is the right one"},
+          {"type": "PATH_INFO", "title": "Google maps", "text": "The right path is dangerous"}
+        ]
+      }
+    ]
+  }
+}

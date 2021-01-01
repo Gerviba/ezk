@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link th:href="@{/style/style.css}" rel="stylesheet">
+    <meta name="theme-color" content="#020D13">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">[<span>Ezk</span>]</div>
+
+        <blockquote>
+            Welcome! To start the game please enter your username.
+        </blockquote>
+
+        <form action="/game" method="post" class="futuristic">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" autocomplete="off" placeholder="Player" maxlength="32">
+            <div class="centered">
+                <input type="submit" value="join" class="primary">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,445 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+    outline: 0 !important;
+    -webkit-tap-highlight-color: transparent !important;
+    text-decoration: none !important;
+}
+
+*:hover {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #031926;
+    color: #468189;
+}
+
+.container {
+    max-width: 800px;
+    margin: 80px auto 20px auto;
+    padding: 46px;
+    text-align: center;
+}
+
+.container .logo {
+    font-size: 72px;
+    color: #468189;
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #67b3bc;
+}
+
+.container blockquote {
+    max-width: 300px;
+    padding: 20px;
+    margin: 20px auto;
+    font-size: 20px;
+}
+
+form.futuristic input[type="text"],
+form.futuristic input[type="password"] {
+    font-family: 'Roboto Mono', monospace;
+    border: 1px solid #468189;
+    padding: 10px 16px;
+    color: #468189;
+    background-color: #031926;
+    font-size: 20px;
+    font-weight: 300;
+    width: 300px;
+    max-width: 50vw;
+}
+
+form.futuristic input[type="text"]:focus {
+    border-color: #67b3bc;
+    color: #67b3bc;
+}
+
+form.futuristic input[type="text"]::placeholder {
+    color: #468189;
+}
+
+form.futuristic input[type="password"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+form.futuristic label {
+    display: block;
+    width: 300px;
+    text-align: left;
+    margin: 0 auto;
+    font-size: 14px;
+    max-width: 50vw;
+}
+
+form.futuristic input[type="submit"].primary {
+    font-family: 'Roboto Mono', monospace;
+    display: block;
+    color: #F4E9CD;
+    background-color: #031926;
+    border: 1px solid #F4E9CD;
+    padding: 10px 16px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 40px auto 0 auto;
+    transition: color ease 0.2s, background-color ease 0.2s, border-color ease 0.2s;
+    cursor: pointer;
+}
+
+form.futuristic input[type="submit"].primary:hover {
+    color: #031926;
+    background-color: #F4E9CD;
+    border-color: #F4E9CD;
+}
+
+.nav-bg {
+    background-color: #020D13;
+    clear: both;
+    position: fixed;
+    width: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    padding-bottom: 10px;
+}
+
+nav.menu-nav {
+    padding: 20px 20px 0 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    clear: both;
+}
+
+nav.menu-nav .logo {
+    display: inline-block;
+    font-size: 32px;
+    vertical-align: center;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+nav .btn,
+.modal-holder .modal input[type="submit"],
+.modal-holder .modal button {
+    font-family: 'Roboto Mono', monospace;
+    border: 1px solid #468189;
+    color: #468189;
+    padding: 10px 16px;
+    font-weight: 300;
+    background-color: #020D13;
+    text-transform: uppercase;
+    font-size: 16px;
+    vertical-align: center;
+    float: right;
+    margin: 0 18px;
+    transition: color ease 0.2s, background-color ease 0.2s, border-color ease 0.2s;
+    cursor: pointer;
+}
+
+nav .btn:hover,
+.modal-holder .modal input[type="submit"]:hover,
+.modal-holder .modal button:hover {
+    color: #020D13;
+    background-color: #67b3bc;
+    border-color: #67b3bc;
+}
+
+.container article {
+    border: 2px solid #468189;
+    max-width: 600px;
+    padding: 12px;
+    box-shadow: 4px 4px 0 #020D13;
+    margin: 24px auto;
+    text-align: left;
+    clear: both;
+}
+
+.container article .join-btn {
+    font-family: 'Roboto Mono', monospace;
+    float: right;
+    padding: 24px 16px;
+    border: 2px solid #F4E9CD;
+    color: #F4E9CD;
+    font-weight: 300;
+    font-size: 16px;
+    background-color: #031926;
+    text-transform: uppercase;
+    margin-right: 24px;
+    transition: color ease 0.2s, background-color ease 0.2s, border-color ease 0.2s;
+    cursor: pointer;
+}
+
+.container article .join-btn:hover {
+    color: #031926;
+    background-color: #F4E9CD;
+}
+
+.container article h2 {
+    color: #67b3bc;
+    font-size: 24px;
+    padding: 0 10px;
+}
+
+.container article table .data {
+    color: #67b3bc;
+}
+
+.container article table td {
+    padding: 4px 8px;
+    vertical-align: top;
+}
+
+.container article table .box-full {
+    display: inline-block;
+    border: 2px solid #67b3bc;
+    background-color: #67b3bc;
+    height: 12px;
+    width: 12px;
+    margin-right: 4px;
+}
+
+.container article table .box-empty {
+    display: inline-block;
+    border: 2px solid #67b3bc;
+    height: 12px;
+    width: 12px;
+    margin-right: 4px;
+}
+
+form.futuristic .check-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+form.futuristic .check-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+form.futuristic .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    border: 2px solid #67b3bc;
+}
+
+form.futuristic .check-container input:checked ~ .checkmark {
+    background-color: #67b3bc;
+    border: 2px solid #67b3bc;
+}
+
+form.futuristic .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+form.futuristic .check-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+form.futuristic .check-container .checkmark:after {
+    left: 7px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #031926;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+form.futuristic input[type="password"] {
+    font-size: 12px;
+    max-width: 160px;
+}
+
+form.futuristic select {
+    font-family: 'Roboto Mono', monospace;
+    border: 1px solid #67b3bc;
+    background-color: #031926;
+    color: #67b3bc;
+    padding: 6px 16px;
+    font-size: 18px;
+    width: 194px;
+    max-width: 194px;
+}
+
+form.futuristic .select-btn {
+    font-family: 'Roboto Mono', monospace;
+    transition: color ease 0.2s, background-color ease 0.2s, border-color ease 0.2s;
+    border: 2px solid #67b3bc;
+    background-color: #031926;
+    color: #67b3bc;
+    padding: 4px 9px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+form.futuristic .select-btn:disabled {
+    color: #031926;
+    background-color: #67b3bc;
+}
+
+form.futuristic input[type="submit"].secondary {
+    font-family: 'Roboto Mono', monospace;
+    padding: 8px 16px;
+    border: 2px solid #F4E9CD;
+    color: #F4E9CD;
+    font-weight: 300;
+    font-size: 16px;
+    background-color: #031926;
+    text-transform: uppercase;
+    transition: color ease 0.2s, background-color ease 0.2s, border-color ease 0.2s;
+    cursor: pointer;
+    margin: 12px 0 0 auto;
+    display: block;
+}
+
+form.futuristic input[type="submit"].secondary:hover {
+    color: #031926;
+    background-color: #F4E9CD;
+}
+
+.create-room td {
+    height: 30px;
+    display: block;
+}
+
+.create-room td:first-of-type {
+    height: 20px;
+}
+
+.create-room td:nth-of-type(2) {
+    padding-bottom: 20px;
+}
+
+.room td {
+    display: block;
+}
+
+.feedback {
+    color: #67b3bc;
+    float: left;
+    padding-top: 20px;
+}
+
+.modal-holder {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-holder .modal {
+    width: 250px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #032434;
+    border: 2px solid #67b3bc;
+}
+
+.modal-holder .modal h3 {
+    font-weight: 300;
+    padding-bottom: 4px;
+}
+
+.modal-holder .modal form {
+    width: 100%;
+}
+
+.modal-holder .modal input[type="password"] {
+    margin-bottom: 4px;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-holder .modal input[type="submit"],
+.modal-holder .modal button {
+    float: none;
+    display: inline-block;
+    background-color: #032434;
+    margin-top: 12px;
+}
+
+.modal-holder .modal input[type="submit"] {
+    color: #F4E9CD;
+    border-color: #F4E9CD;
+}
+
+.modal-holder .modal input[type="submit"]:hover {
+    color: #032434;
+    background-color: #F4E9CD;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020D13;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #468189;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #67b3bc;
+}
+
+@media screen and (min-width: 500px) {
+    .create-room td {
+        display: table-cell;
+    }
+    .create-room td:first-of-type {
+        height: 40px;
+    }
+    .create-room td:nth-of-type(2) {
+        padding-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .room td {
+        display: table-cell;
+    }
+}
+
+@media screen and (min-width: 450px) {
+    .container {
+        margin: 46px auto;
+    }
+}

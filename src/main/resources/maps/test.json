@@ -1,0 +1,39 @@
+{
+  "sectors": {
+    "1": [
+      {
+        "gateDetails": {
+          "type": "WIRES",
+          "graphics": "spaceship_gate_w_1",
+          "buttons": [
+            {"id": 0, "name": "1", "color": "WHITE", "broken": false},
+            {"id": 1, "name": "2", "color": "WHITE", "broken": false},
+            {"id": 2, "name": "3", "color": "WHITE", "broken": false},
+            {"id": 3, "name": "4", "color": "WHITE", "broken": false},
+            {"id": 4, "name": "5", "color": "WHITE", "broken": false},
+            {"id": 5, "name": "6", "color": "WHITE", "broken": false},
+            {"id": 6, "name": "7", "color": "WHITE", "broken": false},
+            {"id": 7, "name": "8", "color": "WHITE", "broken": false},
+            {"id": 8, "name": "9", "color": "WHITE", "broken": false}
+          ],
+          "features": [
+            {"id": 0, "type": "VERSION", "value": "12.5.156"},
+            {"id": 1, "type": "EDITION", "value": "RED"},
+            {"id": 2, "type": "ABORT", "value": ""}
+          ],
+          "solution": [0, 1, 2]
+        },
+        "notes": [
+          {"type": "SIMPLE", "title": "StackOverflow", "text": ""},
+          {"type": "SIMPLE", "title": "Twitter @realDonaldTrump", "text": ""},
+          {"type": "SIMPLE", "title": "Mysterious Russian Forum", "text": ""},
+          {"type": "SIMPLE", "title": "British Scientist", "text": ""},
+          {"type": "SIMPLE", "title": "Some notes", "text": ""},
+          {"type": "SIMPLE", "title": "The Manual", "text": ""}
+        ],
+        "times": [120, 60, 30]
+      }
+    ]
+  }
+
+}

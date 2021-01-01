@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link th:href="@{/style/style.css}" rel="stylesheet">
+    <meta name="theme-color" content="#020D13">
+</head>
+<body>
+    <div class="nav-bg">
+        <nav class="menu-nav">
+            <div class="logo">[<span>Ezk</span>]</div>
+            <button class="btn" th:onclick="|window.location.href='@{/game}'|">Back</button>
+        </nav>
+    </div>
+    <div class="container">
+        <article>
+            <h2>CREATE ROOM</h2>
+            <form onsubmit="createRoom(); return false" class="futuristic">
+                <table class="create-room">
+                    <tr>
+                        <td>Max players</td>
+                        <td>
+                            <button type="button" id="max2" class="select-btn" onclick="setMaxPlayers(2); return false">2</button>
+                            <button type="button" id="max3" class="select-btn" onclick="setMaxPlayers(3); return false">3</button>
+                            <button type="button" id="max4" class="select-btn" onclick="setMaxPlayers(4); return false">4</button>
+                            <button type="button" id="max5" class="select-btn" onclick="setMaxPlayers(5); return false">5</button>
+                            <button type="button" id="max6" class="select-btn" onclick="setMaxPlayers(6); return false" disabled>6</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Difficulty</td>
+                        <td>
+                            <button type="button" id="diff1" class="select-btn" onclick="setDifficulty(1); return false" disabled>1</button>
+                            <button type="button" id="diff2" class="select-btn" onclick="setDifficulty(2); return false">2</button>
+                            <button type="button" id="diff3" class="select-btn" onclick="setDifficulty(3); return false">3</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Map name</td>
+                        <td>
+                            <select name="map" id="map">
+                                <option th:each="map : ${maps}" th:name="${map.second}" th:text="${map.first}">Spaceship 1</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Private room</td>
+                        <td>
+                            <label class="check-container">
+                                <input type="checkbox" id="private" onchange="setPasswordEnabled()">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            <input type="password" name="password" id="password" disabled>
+                        </td>
+                    </tr>
+                </table>
+                <p class="feedback" id="feedback"></p>
+                <input type="submit" value="create" class="secondary">
+            </form>
+        </article>
+    </div>
+
+    <script th:src="@{/js/createRoom.js}"></script>
+    <script th:src="@{/js/menu.js}"></script>
+</body>
+</html>
